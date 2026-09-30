@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luke Richard | Finance Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #CC0033; /* Rutgers Scarlet */
+      --primary-hover: #990026;
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --nav-bg: rgba(255, 255, 255, 0.85);
+      --badge-bg: #f1f5f9;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      --transition: all 0.25s ease;
+    }
+
+    [data-theme="dark"] {
+      --bg-main: #0b0f19;
+      --bg-card: #151c2c;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #1e293b;
+      --nav-bg: rgba(21, 28, 44, 0.85);
+      --badge-bg: #1e293b;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: var(--transition);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--text-main);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 160px 0 90px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      background-color: var(--badge-bg);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .statement-box {
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      padding: 1.75rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .statement-box p {
+      font-size: 1.15rem;
+      color: var(--text-main);
+      font-weight: 500;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+    }
+
+    .skill-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--primary);
+    }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background: var(--badge-bg);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .project-tools {
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tools h4 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    /* Contact & Footer */
+    .contact-container {
+      max-width: 650px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .statement-box p {
+        font-size: 1rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          Luke <span>Richard</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Personal Statement Section -->
+    <section class="hero" id="about">
+      <div class="container">
+        <div class="badge">
+          <i class="fa-solid fa-graduation-cap"></i> Rutgers Business School | Finance
+        </div>
+        <h1>Luke Richard</h1>
+        
+        <div class="statement-box">
+          <p>
+            "Hello, I am a Rutgers Business School student studying finance; I love customer service and I am going to use my excellent client service skills along with my drive for success to build a long and impactful career in Finance."
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-briefcase"></i> View My Work
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            <i class="fa-solid fa-envelope"></i> Contact Me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <h2>Core Competencies</h2>
+          <p>A breakdown of my financial, interpersonal, and technology capabilities.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Advisory & Client Service -->
+          <div class="skill-card">
+            <h3><i class="fa-solid fa-handshake"></i> Advisory & Client Service</h3>
+            <div class="tag-container">
+              <span class="skill-tag">Financial Advising</span>
+              <span class="skill-tag">Client Relationship Management</span>
+              <span class="skill-tag">Active Listening</span>
+              <span class="skill-tag">Communication</span>
+              <span class="skill-tag">Problem Solving</span>
+            </div>
+          </div>
+
+          <!-- Technical & Valuation -->
+          <div class="skill-card">
+            <h3><i class="fa-solid fa-chart-pie"></i> Finance & Analytics</h3>
+            <div class="tag-container">
+              <span class="skill-tag">Valuation</span>
+              <span class="skill-tag">Financial Planning</span>
+              <span class="skill-tag">eMoney Software</span>
+              <span class="skill-tag">Asset-Map</span>
+              <span class="skill-tag">Microsoft Excel</span>
+            </div>
+          </div>
+
+          <!-- Software & Artificial Intelligence -->
+          <div class="skill-card">
+            <h3><i class="fa-solid fa-robot"></i> Software & AI Productivity</h3>
+            <div class="tag-container">
+              <span class="skill-tag">Microsoft Office Suite</span>
+              <span class="skill-tag">ChatGPT</span>
+              <span class="skill-tag">Gemini</span>
+              <span class="skill-tag">Claude</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Projects & Experience</h2>
+          <p>Practical applications of wealth management tools, client service, and event management.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Amplified Planning Extern -->
+          <div class="project-card">
+            <div>
+              <div class="project-title">Amplified Planning Externship</div>
+              <p class="project-desc">
+                Collaborated directly with financial advisors to observe and participate in active client onboarding meetings. Constructed comprehensive financial profiles to map assets and identify tailored investment and financial planning solutions.
+              </p>
+            </div>
+            <div>
+              <div class="project-tools">
+                <h4>Software & Skills Used</h4>
+                <div class="tag-container">
+                  <span class="skill-tag">eMoney</span>
+                  <span class="skill-tag">Asset-Map</span>
+                  <span class="skill-tag">Excel</span>
+                  <span class="skill-tag">Valuation</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-outline" style="font-size:0.85rem; padding:0.5rem 1rem;">
+                  <i class="fa-solid fa-certificate"></i> View Certificate
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Forage Private Bank Job Simulation -->
+          <div class="project-card">
+            <div>
+              <div class="project-title">Forage Private Bank Job Simulation</div>
+              <p class="project-desc">
+                Worked through a private banking job simulation where I developed real-world client interaction skills and learned how to communicate efficiently with senior managers through executive-level professional communications.
+              </p>
+            </div>
+            <div>
+              <div class="project-tools">
+                <h4>Software & Skills Used</h4>
+                <div class="tag-container">
+                  <span class="skill-tag">Private Banking</span>
+                  <span class="skill-tag">Professional Communication</span>
+                  <span class="skill-tag">Client Service</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-outline" style="font-size:0.85rem; padding:0.5rem 1rem;">
+                  <i class="fa-solid fa-award"></i> Simulation Details
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Private Golf Course Tournament Director -->
+          <div class="project-card">
+            <div>
+              <div class="project-title">Private Golf Course Tournament Director</div>
+              <p class="project-desc">
+                Collaborated with a cross-functional team to organize, set up, and execute high-end private golf outings and tournaments throughout the summer season, providing premium customer service to members and high-net-worth guests.
+              </p>
+            </div>
+            <div>
+              <div class="project-tools">
+                <h4>Software & Skills Used</h4>
+                <div class="tag-container">
+                  <span class="skill-tag">Client Service</span>
+                  <span class="skill-tag">Team Leadership</span>
+                  <span class="skill-tag">Event Operations</span>
+                  <span class="skill-tag">Problem Solving</span>
+                </div>
+              </div>
+              <div class="project-links">
+                <a href="#" class="btn btn-outline" style="font-size:0.85rem; padding:0.5rem 1rem;">
+                  <i class="fa-solid fa-flag"></i> Event Experience
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="contact-container">
+          <div class="section-header">
+            <h2>Let's Connect</h2>
+            <p>I am eager to discuss finance opportunities and financial advising roles.</p>
+          </div>
+          <a href="mailto:your.email@rutgers.edu" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.9rem 2rem;">
+            <i class="fa-solid fa-paper-plane"></i> Send Me an Email
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Luke Richard | Rutgers Business School. Hosted on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <!-- Theme Toggle JavaScript -->
+  <script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    
+    // Check saved theme or system default
+    const savedTheme = localStorage.getItem('theme') || 
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      let newTheme = 'light';
+      
+      if (currentTheme !== 'dark') {
+        newTheme = 'dark';
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+</body>
+</html>
